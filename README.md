@@ -1,4 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![CircleCI](https://circleci.com/gh/norbitrial/react-usage-of-array-functions.svg?style=shield&circle-token=3e1a66f473b35f7803a2758d258514bef0017731)](https://app.circleci.com/pipelines/github/norbitrial/react-usage-of-array-functions?branch=master)
+
+# Usage of array functions in React 📋✔️
+
+This repository represents several good ways of using [array functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in practice.
+
+# Demo
+
+A live demo is accessible in [https://array-functions.szabonorbert.me/](https://array-functions.szabonorbert.me/) link.
+
+# Installation and techincal guidance
+
+The solution is hosted in [Google Cloud's Firebase](https://firebase.google.com/), deployment is powered by [CircleCI](https://circleci.com/). The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). For the UI elements check out [https://material-ui.com/](https://material-ui.com/).
 
 ## Available Scripts
 
