@@ -1,8 +1,8 @@
 [![CircleCI](https://circleci.com/gh/norbitrial/react-usage-of-array-functions.svg?style=shield&circle-token=3e1a66f473b35f7803a2758d258514bef0017731)](https://app.circleci.com/pipelines/github/norbitrial/react-usage-of-array-functions?branch=master)
 
-# Usage of array functions in React 📋✔️
+# Usage of array functions in React
 
-This repository represents several good ways of using [array functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in practice.
+Meanwhile continously answering questions on [Stack Overflow](https://stackoverflow.com/users/7599510/norbitrial?tab=profile) I face questions regarding challenges of using `.map()`, `.filter()`, `.find()` and their friends. So as a fun project I decided to build this repository which represents several good ways of using [array functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in practice. 📋✔️
 
 # Demo
 
