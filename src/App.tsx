@@ -67,7 +67,7 @@ const App = () => {
         <MaterialTable data={data} />
 
         <h4>
-          <Emoji text={"👨‍💻"} />{" "}
+          Code Repository <Emoji text={"👨‍💻"} />:{" "}
           <a
             href="https://github.com/norbitrial/react-usage-of-array-functions"
             target="_blank"
