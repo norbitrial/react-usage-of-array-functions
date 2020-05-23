@@ -2,7 +2,7 @@
 
 # Usage of array functions in React
 
-Meanwhile continously answering questions on [Stack Overflow](https://stackoverflow.com/users/7599510/norbitrial?tab=profile) I face questions regarding challenges of using `.map()`, `.filter()`, `.find()` and their friends. So as a fun project I decided to build this repository which represents several good ways of using [array functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in practice. 📋✔️
+Meanwhile continuously answering questions on [Stack Overflow](https://stackoverflow.com/users/7599510/norbitrial?tab=profile) I face challenges of using `.map()`, `.filter()`, `.find()` and their friends. So as a fun project I decided to build this repository which represents several good ways of using [array functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in practice. 📋✔️
 
 # Demo
 

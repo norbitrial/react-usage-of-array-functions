@@ -29,7 +29,7 @@ const App = () => {
       <Container maxWidth="lg" className={styles["app-main"]}>
         <h1>Usage of array functions in React</h1>
         <h4>
-          Meanwhile continously answering questions on{" "}
+          Meanwhile continuously answering questions on{" "}
           <a
             href="https://stackoverflow.com/users/7599510/norbitrial?tab=profile"
             target="_blank"
@@ -37,7 +37,7 @@ const App = () => {
           >
             Stack Overflow
           </a>{" "}
-          I face questions regarding challenges of using{" "}
+          I face challenges of using{" "}
           <span role="img" aria-label="code" className={styles["code"]}>
             .map()
           </span>
