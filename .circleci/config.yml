@@ -1,0 +1,72 @@
+version: 2.1
+parameters:
+  firebase-project:
+    type: string
+    default: "array-functions"
+orbs:
+  node: circleci/node@1.1.6
+jobs:
+  install-dependencies:
+    executor:
+      name: node/default
+    steps:
+      - node/with-cache:
+          steps:
+            - checkout
+            - run: npm i
+            - run: npm i -D
+            - save_cache:
+                key: dependencies
+                paths: node_modules
+  build:
+    executor:
+      name: node/default
+    steps:
+      - node/with-cache:
+          steps:
+            - checkout
+            - restore_cache:
+                key: dependencies
+            - run: npm run-script build
+            - save_cache:
+                key: build
+                paths: build
+  unit-test:
+    executor:
+      name: node/default
+    steps:
+      - node/with-cache:
+          steps:
+            - checkout
+            - restore_cache:
+                key: dependencies
+            - run: npm test
+  deploy:
+    executor:
+      name: node/default
+    steps:
+      - node/with-cache:
+          steps:
+            - checkout
+            - restore_cache:
+                key: build
+            - run: sudo npm install -g firebase-tools
+            - run: firebase use << pipeline.parameters.firebase-project >> --token ${FIREBASE_TOKEN} --non-interactive
+            - run: firebase deploy --token ${FIREBASE_TOKEN} --non-interactive
+workflows:
+  build-and-test:
+    jobs:
+      - install-dependencies
+      - build:
+          requires:
+            - install-dependencies
+      - unit-test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - unit-test
+          filters:
+            branches:
+              only:
+                - master
