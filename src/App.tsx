@@ -4,6 +4,7 @@ import useStyles from "./App.styles";
 import { Container } from "@material-ui/core";
 import Header from "./Components/Header";
 import CodeRepo from "./Components/CodeRepo";
+import Navigation from "./Components/Navigation";
 
 const App = () => {
   const styles = useStyles();
@@ -31,6 +32,7 @@ const App = () => {
       <Container maxWidth="lg" className={styles["app-main"]}>
         <Header />
 
+        <Navigation />
         <MaterialTable data={data} />
 
         <CodeRepo />
