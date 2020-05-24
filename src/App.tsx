@@ -1,31 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import MaterialTable from "./Components/MaterialTable";
 import useStyles from "./App.styles";
 import { Container } from "@material-ui/core";
 import Header from "./Components/Header";
 import CodeRepo from "./Components/CodeRepo";
 import Navigation from "./Components/Navigation";
+import Consts from "./Consts";
+import IDessert from "./Interfaces/IDessert";
 
 const App = () => {
   const styles = useStyles();
-
-  function createData(
-    name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number
-  ) {
-    return { name, calories, fat, carbs, protein };
-  }
-
-  const data = [
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-  ];
+  const [dessertList] = useState<Array<IDessert>>(Consts.DessertList);
 
   return (
     <div className={styles["app"]}>
@@ -33,7 +18,7 @@ const App = () => {
         <Header />
 
         <Navigation />
-        <MaterialTable data={data} />
+        <MaterialTable data={dessertList} />
 
         <CodeRepo />
       </Container>

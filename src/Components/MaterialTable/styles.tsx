@@ -4,6 +4,9 @@ const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
+  image: {
+    maxWidth: 50,
+  },
 });
 
 export default useStyles;
