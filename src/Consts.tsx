@@ -1,6 +1,7 @@
 import IDessert from "./Interfaces/IDessert";
 import IExample from "./Interfaces/IExample";
 import FilterByName from "./Components/ExampleHandler/FilterByName";
+import FilterByBoolean from "./Components/ExampleHandler/FilterByBoolean";
 
 const dessertList: Array<IDessert> = [
   {
@@ -121,6 +122,13 @@ const exampleList: Array<IExample> = [
     componentName: FilterByName,
     link:
       "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/filterByName.tsx",
+  },
+  {
+    id: 2,
+    label: "Filter By Boolean",
+    componentName: FilterByBoolean,
+    link:
+      "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/filterByBoolean.tsx",
   },
 ];
 

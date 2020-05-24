@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
-    minWidth: "160px",
+    minWidth: "170px",
   },
   "tab-panel": {
     width: "100%",
