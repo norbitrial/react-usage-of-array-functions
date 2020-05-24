@@ -8,7 +8,7 @@ import useStyles from "./styles";
 import Emoji from "../Emoji";
 import Consts from "../../Consts";
 import IExample from "../../Interfaces/IExample";
-import Example from "../Example";
+import ExampleHandler from "../ExampleHandler";
 
 const Navigation = () => {
   const classes = useStyles();
@@ -41,7 +41,7 @@ const Navigation = () => {
       </Grid>
       <Grid item lg={9} md={9} sm={12} xs={12}>
         {selectedExample ? (
-          <Example example={selectedExample} />
+          <ExampleHandler example={selectedExample} />
         ) : (
           <>
             <Emoji text={"👈"} /> Select an example first from tree view

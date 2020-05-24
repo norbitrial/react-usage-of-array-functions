@@ -8,7 +8,7 @@ interface Props {
   example: IExample;
 }
 
-const Example = (props: Props) => {
+const ExampleHandler = (props: Props) => {
   const { example } = props;
 
   useEffect(() => {
@@ -38,4 +38,4 @@ const Example = (props: Props) => {
   );
 };
 
-export default Example;
+export default ExampleHandler;
