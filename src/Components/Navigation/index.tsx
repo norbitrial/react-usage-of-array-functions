@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 import { Tabs, Tab, Grid } from "@material-ui/core";
@@ -7,6 +7,8 @@ import TabPanel from "./TabPanel";
 import IExample from "../../Interfaces/IExample";
 import Consts from "../../Consts";
 import types from "../../Duck/DessertData/types";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import axios from "axios";
 
 const createProps = (index: Number) => ({
   id: `vertical-tab-${index}`,
@@ -18,7 +20,20 @@ const Navigation = () => {
   const classes = useStyles();
   const [examples] = useState<Array<IExample>>(Consts.Examples);
   const [value, setValue] = React.useState(0);
+  const [codeSnippet, setCodeSnippet] = useState("");
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      setCodeSnippet("");
+      const currentExample = examples.find((e: IExample) => e.id === value);
+      if (currentExample && currentExample.link) {
+        const { link } = currentExample;
+        const { data: code } = await axios.get(link);
+        setCodeSnippet(code);
+      }
+    })();
+  }, [examples, value]);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     dispatch({ type: types.RESET_DESSERT_LIST });
@@ -57,7 +72,11 @@ const Navigation = () => {
                   <example.componentName />
                 </Grid>
                 <Grid item lg={6} md={6} sm={6} xs={6}>
-                  Code snippet from github here
+                  {codeSnippet && (
+                    <SyntaxHighlighter language="typescript">
+                      {codeSnippet}
+                    </SyntaxHighlighter>
+                  )}
                 </Grid>
               </Grid>
             </TabPanel>

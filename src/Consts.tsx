@@ -119,7 +119,8 @@ const exampleList: Array<IExample> = [
     id: 1,
     label: "Filter By Name",
     componentName: FilterByName,
-    link: "link to the file for embedding github code",
+    link:
+      "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/filterByName.tsx",
   },
 ];
 
