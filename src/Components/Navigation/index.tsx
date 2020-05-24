@@ -57,7 +57,7 @@ const Navigation = () => {
               <Tab label={example.label} {...createProps(example.id)} />
             ))}
           </Tabs>
-          <TabPanel value={value} index={0}>
+          <TabPanel value={value} index={0} className={classes["tab-panel"]}>
             <Welcome />
           </TabPanel>
 
@@ -66,14 +66,32 @@ const Navigation = () => {
               key={`${example.id}_${example.label}`}
               value={value}
               index={example.id}
+              className={classes["tab-panel"]}
             >
-              <Grid container>
-                <Grid item lg={6} md={6} sm={6} xs={6}>
+              <Grid container className={classes["grid-container"]}>
+                <Grid
+                  item
+                  lg={4}
+                  md={4}
+                  sm={4}
+                  xs={4}
+                  className={classes["grid-item"]}
+                >
                   <example.componentName />
                 </Grid>
-                <Grid item lg={6} md={6} sm={6} xs={6}>
+                <Grid
+                  item
+                  lg={8}
+                  md={8}
+                  sm={8}
+                  xs={8}
+                  className={classes["grid-item"]}
+                >
                   {codeSnippet && (
-                    <SyntaxHighlighter language="typescript">
+                    <SyntaxHighlighter
+                      language="typescript"
+                      className={classes["syntax"]}
+                    >
                       {codeSnippet}
                     </SyntaxHighlighter>
                   )}
