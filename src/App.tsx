@@ -3,6 +3,7 @@ import MaterialTable from "./Components/MaterialTable";
 import useStyles from "./App.styles";
 import { Container } from "@material-ui/core";
 import Emoji from "./Components/Emoji";
+import CodeRepo from "./Components/CodeRepo";
 
 const App = () => {
   const styles = useStyles();
@@ -66,16 +67,7 @@ const App = () => {
 
         <MaterialTable data={data} />
 
-        <h4>
-          Code Repository <Emoji text={"👨‍💻"} />:{" "}
-          <a
-            href="https://github.com/norbitrial/react-usage-of-array-functions"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            https://github.com/norbitrial/react-usage-of-array-functions
-          </a>
-        </h4>
+        <CodeRepo />
       </Container>
     </div>
   );
