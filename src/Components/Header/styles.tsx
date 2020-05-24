@@ -1,12 +1,8 @@
 import { makeStyles } from "@material-ui/core";
+import CommonStyles from "../../CommonStyles";
 
 const styles = makeStyles({
-  app: {
-    textAlign: "center",
-  },
-  "app-main": {
-    paddingBottom: "60px",
-  },
+  code: CommonStyles.code,
 });
 
 export default styles;
