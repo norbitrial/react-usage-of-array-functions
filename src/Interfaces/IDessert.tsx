@@ -4,7 +4,7 @@ interface IDessert {
   calories: number;
   description: string;
   type: string;
-  isSweet: boolean;
+  hasChocolate: boolean;
   image?: string;
 }
 

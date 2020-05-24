@@ -15,7 +15,7 @@ import Emoji from "../Emoji";
 const MaterialTable = ({ data }: any) => {
   const classes = useStyles();
   const [tableCellNames] = useState<Array<string>>(Consts.TableCellNames);
-  const [maxLength] = useState<number>(80);
+  const [maxLength] = useState<number>(100);
 
   return (
     <TableContainer component={Paper}>
@@ -51,11 +51,11 @@ const MaterialTable = ({ data }: any) => {
                   : dessert.description}
               </StyledTableCell>
               <StyledTableCell align="right">
-                {dessert.calories}
+                <strong>{dessert.calories}</strong> kcal
               </StyledTableCell>
               <StyledTableCell align="right">{dessert.type}</StyledTableCell>
               <StyledTableCell align="right">
-                <Emoji text={dessert.isSweet ? "✔️" : "❌"} />
+                <Emoji text={dessert.hasChocolate ? "✔️" : "❌"} />
               </StyledTableCell>
             </StyledTableRow>
           ))}
