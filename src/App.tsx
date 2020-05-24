@@ -2,7 +2,6 @@ import React from "react";
 import MaterialTable from "./Components/MaterialTable";
 import useStyles from "./App.styles";
 import { Container } from "@material-ui/core";
-import Header from "./Components/Header";
 import CodeRepo from "./Components/CodeRepo";
 import Navigation from "./Components/Navigation";
 import { useSelector, RootStateOrAny } from "react-redux";
@@ -16,7 +15,7 @@ const App = () => {
   return (
     <div className={styles["app"]}>
       <Container maxWidth="lg" className={styles["app-main"]}>
-        <Header />
+        <h1>Usage of array functions in React</h1>
 
         <Navigation />
         <MaterialTable data={dessertList} />

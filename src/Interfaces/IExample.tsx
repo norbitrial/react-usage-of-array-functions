@@ -1,7 +1,8 @@
 interface IExample {
-  nodeId: string;
+  id: Number;
   label: string;
-  nodes?: Array<IExample>;
+  componentName: any;
+  link: string;
 }
 
 export default IExample;

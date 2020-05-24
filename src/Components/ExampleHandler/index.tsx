@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import IExample from "../../Interfaces/IExample";
-import { TextField } from "@material-ui/core";
 import ReactGA from "react-ga";
 import Consts from "../../Consts";
 
@@ -25,15 +24,11 @@ const ExampleHandler = (props: Props) => {
 
   return (
     <>
-      <p>Code snippet from github:</p>
-      {example.label}
-      <p>
-        <TextField id="standard-basic" label="Name" />
-      </p>
-      {/*
-        Consts array should have the component itself FilterExample as a property
-        Separate components for each examples
-      */}
+      {example.componentName ? (
+        <example.componentName example={example} />
+      ) : (
+        <p>Something went wrong</p>
+      )}
     </>
   );
 };

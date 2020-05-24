@@ -1,52 +1,68 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
-import TreeView from "@material-ui/lab/TreeView";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import TreeItem from "@material-ui/lab/TreeItem";
+import { useDispatch } from "react-redux";
 import useStyles from "./styles";
-import Emoji from "../Emoji";
-import Consts from "../../Consts";
+import { Tabs, Tab, Grid } from "@material-ui/core";
+import Welcome from "./Welcome";
+import TabPanel from "./TabPanel";
 import IExample from "../../Interfaces/IExample";
-import ExampleHandler from "../ExampleHandler";
+import Consts from "../../Consts";
+import types from "../../Duck/DessertData/types";
+
+const createProps = (index: Number) => ({
+  id: `vertical-tab-${index}`,
+  key: `vertical-tab-${index}`,
+  "aria-controls": `vertical-tabpanel-${index}`,
+});
 
 const Navigation = () => {
   const classes = useStyles();
   const [examples] = useState<Array<IExample>>(Consts.Examples);
-  const [selectedExample, setSelectedExample] = useState<IExample>();
+  const [value, setValue] = React.useState(0);
+  const dispatch = useDispatch();
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    dispatch({ type: types.RESET_DESSERT_LIST });
+    setValue(newValue);
+  };
 
   return (
     <Grid container>
-      <Grid item lg={3} md={3} sm={12} xs={12}>
-        <span>Select an example from treeview:</span>
-        <TreeView
-          className={classes.root}
-          defaultCollapseIcon={<ExpandMoreIcon />}
-          defaultExpandIcon={<ChevronRightIcon />}
-        >
-          {examples.map((e: IExample) => (
-            <TreeItem key={e.nodeId} nodeId={e.nodeId} label={e.label}>
-              {e.nodes &&
-                e.nodes.map((n) => (
-                  <TreeItem
-                    key={n.nodeId}
-                    nodeId={n.nodeId}
-                    label={n.label}
-                    onClick={() => setSelectedExample(n)}
-                  ></TreeItem>
-                ))}
-            </TreeItem>
+      <Grid item lg={12} md={12} sm={12} xs={12}>
+        <div className={classes.root}>
+          <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={value}
+            onChange={handleChange}
+            aria-label="Vertical tabs example"
+            className={classes.tabs}
+          >
+            <Tab label="Welcome" {...createProps(0)} />
+            {examples.map((example: IExample) => (
+              <Tab label={example.label} {...createProps(example.id)} />
+            ))}
+          </Tabs>
+          <TabPanel value={value} index={0}>
+            <Welcome />
+          </TabPanel>
+
+          {examples.map((example: IExample) => (
+            <TabPanel
+              key={`${example.id}_${example.label}`}
+              value={value}
+              index={example.id}
+            >
+              <Grid container>
+                <Grid item lg={6} md={6} sm={6} xs={6}>
+                  <example.componentName />
+                </Grid>
+                <Grid item lg={6} md={6} sm={6} xs={6}>
+                  Code snippet from github here
+                </Grid>
+              </Grid>
+            </TabPanel>
           ))}
-        </TreeView>
-      </Grid>
-      <Grid item lg={9} md={9} sm={12} xs={12}>
-        {selectedExample ? (
-          <ExampleHandler example={selectedExample} />
-        ) : (
-          <>
-            <Emoji text={"👈"} /> Select an example first from tree view
-          </>
-        )}
+        </div>
       </Grid>
     </Grid>
   );
