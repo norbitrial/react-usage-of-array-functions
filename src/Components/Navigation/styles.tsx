@@ -20,7 +20,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     padding: "0px !important",
   },
-  "grid-item": {},
+  "grid-item": {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   syntax: {
     maxWidth: "100%",
     borderRadius: "4px 4px 4px 4px",

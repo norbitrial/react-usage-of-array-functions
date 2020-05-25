@@ -4,11 +4,13 @@ import useStyles from "./styles";
 import { Tabs, Tab, Grid } from "@material-ui/core";
 import Welcome from "./Welcome";
 import TabPanel from "./TabPanel";
+import Loading from "../Loading";
 import IExample from "../../Interfaces/IExample";
 import Consts from "../../Consts";
 import types from "../../Duck/DessertData/types";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import axios from "axios";
+import Error from "../Error";
 
 const createProps = (index: Number) => ({
   id: `vertical-tab-${index}`,
@@ -19,8 +21,10 @@ const createProps = (index: Number) => ({
 const Navigation = () => {
   const classes = useStyles();
   const [examples] = useState<Array<IExample>>(Consts.Examples);
-  const [value, setValue] = React.useState(0);
-  const [codeSnippet, setCodeSnippet] = useState("");
+  const [value, setValue] = React.useState<number>(0);
+  const [isInProgress, setIsInProgress] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
+  const [codeSnippet, setCodeSnippet] = useState<string>("");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,9 +32,17 @@ const Navigation = () => {
       setCodeSnippet("");
       const currentExample = examples.find((e: IExample) => e.id === value);
       if (currentExample && currentExample.link) {
+        setIsInProgress(true);
+        setHasError(false);
         const { link } = currentExample;
-        const { data: code } = await axios.get(link);
-        setCodeSnippet(code);
+        try {
+          const { data: code } = await axios.get(link);
+          setCodeSnippet(code);
+        } catch (err) {
+          setHasError(true);
+          console.log("Error occured", err);
+        }
+        setIsInProgress(false);
       }
     })();
   }, [examples, value]);
@@ -87,14 +99,20 @@ const Navigation = () => {
                   xs={9}
                   className={classes["grid-item"]}
                 >
-                  {codeSnippet && (
-                    <SyntaxHighlighter
-                      language="typescript"
-                      className={classes["syntax"]}
-                    >
-                      {codeSnippet}
-                    </SyntaxHighlighter>
+                  {isInProgress ? (
+                    <Loading text={"Loading code snippet from GitHub..."} />
+                  ) : (
+                    codeSnippet && (
+                      <SyntaxHighlighter
+                        language="typescript"
+                        className={classes["syntax"]}
+                      >
+                        {codeSnippet}
+                      </SyntaxHighlighter>
+                    )
                   )}
+
+                  {hasError ? <Error /> : null}
                 </Grid>
               </Grid>
             </TabPanel>
