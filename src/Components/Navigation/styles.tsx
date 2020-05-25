@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   "grid-item": {},
   syntax: {
     maxWidth: "100%",
+    borderRadius: "4px 4px 4px 4px",
   },
 }));
 

@@ -71,20 +71,20 @@ const Navigation = () => {
               <Grid container className={classes["grid-container"]}>
                 <Grid
                   item
-                  lg={4}
-                  md={4}
-                  sm={4}
-                  xs={4}
+                  lg={3}
+                  md={3}
+                  sm={3}
+                  xs={3}
                   className={classes["grid-item"]}
                 >
                   <example.componentName />
                 </Grid>
                 <Grid
                   item
-                  lg={8}
-                  md={8}
-                  sm={8}
-                  xs={8}
+                  lg={9}
+                  md={9}
+                  sm={9}
+                  xs={9}
                   className={classes["grid-item"]}
                 >
                   {codeSnippet && (
