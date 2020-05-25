@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
-import { Tabs, Tab, Grid } from "@material-ui/core";
+import { Tabs, Tab, Grid, useMediaQuery } from "@material-ui/core";
 import Welcome from "./Welcome";
 import TabPanel from "./TabPanel";
 import Loading from "../Loading";
@@ -19,6 +19,7 @@ const createProps = (index: Number) => ({
 });
 
 const Navigation = () => {
+  const isSmallScreen = useMediaQuery(Consts.SmallScreenMediaQuery);
   const classes = useStyles();
   const [examples] = useState<Array<IExample>>(Consts.Examples);
   const [value, setValue] = React.useState<number>(0);
@@ -52,23 +53,33 @@ const Navigation = () => {
     setValue(newValue);
   };
 
+  const renderTabs = () => {
+    return (
+      <Tabs
+        orientation={isSmallScreen ? "horizontal" : "vertical"}
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Code example tabs"
+        className={classes.tabs}
+      >
+        <Tab label="Welcome" {...createProps(0)} />
+        {examples.map((example: IExample) => (
+          <Tab label={example.label} {...createProps(example.id)} />
+        ))}
+      </Tabs>
+    );
+  };
+
   return (
     <Grid container>
       <Grid item lg={12} md={12} sm={12} xs={12}>
         <div className={classes.root}>
-          <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            className={classes.tabs}
-          >
-            <Tab label="Welcome" {...createProps(0)} />
-            {examples.map((example: IExample) => (
-              <Tab label={example.label} {...createProps(example.id)} />
-            ))}
-          </Tabs>
+          {isSmallScreen ? (
+            <div className={classes["tabs-border"]}>{renderTabs()}</div>
+          ) : (
+            renderTabs()
+          )}
           <TabPanel value={value} index={0} className={classes["tab-panel"]}>
             <Welcome />
           </TabPanel>

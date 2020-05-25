@@ -1,9 +1,11 @@
 import React from "react";
 import Emoji from "../../Emoji";
 import useStyles from "./styles";
-import { Grid } from "@material-ui/core";
+import { Grid, useMediaQuery } from "@material-ui/core";
+import Consts from "../../../Consts";
 
 const Welcome = () => {
+  const isSmallScreen = useMediaQuery(Consts.SmallScreenMediaQuery);
   const styles = useStyles();
   return (
     <>
@@ -49,7 +51,8 @@ const Welcome = () => {
       </Grid>
       <Grid container>
         <Grid item>
-          <Emoji text={"👈"} /> Select an example first from the tabs
+          <Emoji text={isSmallScreen ? "☝️" : "👈"} /> Select an example first
+          from the tabs
         </Grid>
       </Grid>
     </>

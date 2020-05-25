@@ -138,6 +138,30 @@ const exampleList: Array<IExample> = [
     link:
       "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/sumWithReduce.tsx",
   },
+
+  {
+    id: 4,
+    label: "Sum With Reduce",
+    componentName: SumWithReduce,
+    link:
+      "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/sumWithReduce.tsx",
+  },
+
+  {
+    id: 5,
+    label: "Sum With Reduce",
+    componentName: SumWithReduce,
+    link:
+      "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/sumWithReduce.tsx",
+  },
+
+  {
+    id: 6,
+    label: "Sum With Reduce",
+    componentName: SumWithReduce,
+    link:
+      "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/sumWithReduce.tsx",
+  },
 ];
 
 export default {
@@ -153,4 +177,5 @@ export default {
     "🍫",
   ],
   DessertList: dessertList,
+  SmallScreenMediaQuery: "(max-width:1000px)",
 };
