@@ -5,6 +5,7 @@ import {
   InputAdornment,
   FormControl,
   FormHelperText,
+  Grid,
 } from "@material-ui/core";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import types from "../../../Duck/DessertData/types";
@@ -18,8 +19,8 @@ const SumWithReduce = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <p>
+    <Grid container className={classes["grid-container"]}>
+      <Grid item className={classes["grid-item"]}>
         <FormControl className={classes["form-control"]}>
           <Input
             id="standard-adornment-weight"
@@ -34,8 +35,8 @@ const SumWithReduce = () => {
             Calories
           </FormHelperText>
         </FormControl>
-      </p>
-      <p>
+      </Grid>
+      <Grid item className={classes["grid-item"]}>
         <Button
           variant="contained"
           onClick={() =>
@@ -46,8 +47,8 @@ const SumWithReduce = () => {
         >
           Calculate Sum
         </Button>
-      </p>
-    </>
+      </Grid>
+    </Grid>
   );
 };
 

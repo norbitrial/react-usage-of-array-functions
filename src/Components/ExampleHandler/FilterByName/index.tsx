@@ -1,22 +1,24 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import types from "../../../Duck/DessertData/types";
+import useStyles from "./styles";
 
 const FilterByName = () => {
+  const classes = useStyles();
   const [name, setName] = useState("");
   const dispatch = useDispatch();
 
   return (
-    <>
-      <p>
+    <Grid container className={classes["grid-container"]}>
+      <Grid item className={classes["grid-item"]}>
         <TextField
           id="standard-basic"
           label="Name"
           onChange={(e) => setName(e.target.value)}
         />
-      </p>
-      <p>
+      </Grid>
+      <Grid item className={classes["grid-item"]}>
         <Button
           variant="contained"
           onClick={() =>
@@ -28,8 +30,8 @@ const FilterByName = () => {
         >
           Filter
         </Button>
-      </p>
-    </>
+      </Grid>
+    </Grid>
   );
 };
 
