@@ -15,7 +15,7 @@ import IDessert from "../../../Interfaces/IDessert";
 
 const FindByName = () => {
   const classes = useStyles();
-  const [name, setName] = useState<string>("");
+  const [name, setName] = useState<string>(Consts.DessertList[0].name);
   const dispatch = useDispatch();
 
   return (
