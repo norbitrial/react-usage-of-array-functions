@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: "flex",
-    minHeight: 224,
+    minHeight: 264,
     height: "20vh",
     paddingBottom: "2vh",
   },
