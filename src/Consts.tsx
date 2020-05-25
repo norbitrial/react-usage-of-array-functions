@@ -2,6 +2,7 @@ import IDessert from "./Interfaces/IDessert";
 import IExample from "./Interfaces/IExample";
 import FilterByName from "./Components/ExampleHandler/FilterByName";
 import FilterByBoolean from "./Components/ExampleHandler/FilterByBoolean";
+import SumWithReduce from "./Components/ExampleHandler/SumWithReduce";
 
 const dessertList: Array<IDessert> = [
   {
@@ -129,6 +130,13 @@ const exampleList: Array<IExample> = [
     componentName: FilterByBoolean,
     link:
       "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/filterByBoolean.tsx",
+  },
+  {
+    id: 3,
+    label: "Sum With Reduce",
+    componentName: SumWithReduce,
+    link:
+      "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/sumWithReduce.tsx",
   },
 ];
 

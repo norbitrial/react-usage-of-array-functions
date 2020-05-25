@@ -36,7 +36,7 @@ const Navigation = () => {
   }, [examples, value]);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    dispatch({ type: types.RESET_DESSERT_LIST });
+    dispatch({ type: types.RESET_STATE });
     setValue(newValue);
   };
 
