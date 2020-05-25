@@ -46,7 +46,7 @@ const MaterialTable = ({ data }: any) => {
       const state = cloneStates.find(
         (e: ITableRowState) => e.dessert.id === dessert.id
       );
-      console.log({ dessert, state, previousState });
+
       if (state) {
         state.open = !state.open;
       }
