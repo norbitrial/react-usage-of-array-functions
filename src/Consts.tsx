@@ -4,7 +4,7 @@ import FilterByName from "./Components/ExampleHandler/FilterByName";
 import FilterByBoolean from "./Components/ExampleHandler/FilterByBoolean";
 import SumWithReduce from "./Components/ExampleHandler/SumWithReduce";
 import FindByName from "./Components/ExampleHandler/FindByName";
-import HasSomeOfThemIngredient from "./Components/ExampleHandler/HasSomeOfThemIngredient";
+import HaveSomeOfThem from "./Components/ExampleHandler/HaveSomeOfThem";
 import IIngredient from "./Interfaces/IIngredient";
 
 const dessertList: Array<IDessert> = [
@@ -160,8 +160,8 @@ const exampleList: Array<IExample> = [
   },
   {
     id: 5,
-    label: "Has Some",
-    componentName: HasSomeOfThemIngredient,
+    label: "Have Some Of Them",
+    componentName: HaveSomeOfThem,
     link:
       "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/haveSomeOfThem.tsx",
   },

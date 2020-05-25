@@ -27,7 +27,7 @@ const HasSomeOfThemIngredient = () => {
 
   const onCheckClick = () => {
     dispatch({
-      type: types.HAS_SOME_OF_THEM_INGREDIENT,
+      type: types.HAVE_SOME_OF_THEM,
       payload: ingredient,
     });
     setHasChecked(true);

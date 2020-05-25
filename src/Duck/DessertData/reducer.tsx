@@ -5,7 +5,7 @@ import { filterByName } from "./Examples/filterByName";
 import { filterByBoolean } from "./Examples/filterByBoolean";
 import { sumWithReduce } from "./Examples/sumWithReduce";
 import { findByName } from "./Examples/findByName";
-import { hasSomeOfThemIngredient } from "./Examples/hasSomeOfThemIngredient";
+import { haveSomeOfThem } from "./Examples/haveSomeOfThem";
 
 const initialState: IState = {
   items: Consts.DessertList,
@@ -35,13 +35,10 @@ export default function reducer(state = initialState, action: any) {
         ...state,
         items: [findByName(Consts.DessertList, action.payload)],
       };
-    case types.HAS_SOME_OF_THEM_INGREDIENT:
+    case types.HAVE_SOME_OF_THEM:
       return {
         ...state,
-        isTrueStatement: hasSomeOfThemIngredient(
-          Consts.DessertList,
-          action.payload.id
-        ),
+        isTrueStatement: haveSomeOfThem(Consts.DessertList, action.payload.id),
       };
     case types.RESET_STATE:
       return {
