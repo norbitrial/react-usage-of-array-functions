@@ -4,6 +4,7 @@ import IState from "../../Interfaces/IState";
 import { filterByName } from "./Examples/filterByName";
 import { filterByBoolean } from "./Examples/filterByBoolean";
 import { sumWithReduce } from "./Examples/sumWithReduce";
+import { findByName } from "./Examples/findByName";
 
 const initialState: IState = {
   items: Consts.DessertList,
@@ -26,6 +27,11 @@ export default function reducer(state = initialState, action: any) {
       return {
         ...state,
         sumOfCalories: sumWithReduce(Consts.DessertList),
+      };
+    case types.FIND_BY_NAME:
+      return {
+        ...state,
+        items: [findByName(Consts.DessertList, action.payload)],
       };
     case types.RESET_STATE:
       return {

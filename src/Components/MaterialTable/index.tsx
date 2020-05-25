@@ -33,32 +33,33 @@ const MaterialTable = ({ data }: any) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((dessert: IDessert) => (
-            <StyledTableRow key={`${dessert.id}_${dessert.name}`}>
-              <StyledTableCell component="th" scope="row">
-                <strong>{dessert.name}</strong>
-              </StyledTableCell>
-              <StyledTableCell>
-                <img
-                  src={dessert.image}
-                  alt={dessert.name}
-                  className={classes["image"]}
-                />
-              </StyledTableCell>
-              <StyledTableCell>
-                {dessert.description.length > maxLength
-                  ? `${dessert.description.substring(0, maxLength)}...`
-                  : dessert.description}
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <strong>{dessert.calories}</strong> kcal
-              </StyledTableCell>
-              <StyledTableCell align="right">{dessert.type}</StyledTableCell>
-              <StyledTableCell align="right">
-                <Emoji text={dessert.hasChocolate ? "✔️" : "❌"} />
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
+          {data &&
+            data.map((dessert: IDessert) => (
+              <StyledTableRow key={`${dessert.id}_${dessert.name}`}>
+                <StyledTableCell component="th" scope="row">
+                  <strong>{dessert.name}</strong>
+                </StyledTableCell>
+                <StyledTableCell>
+                  <img
+                    src={dessert.image}
+                    alt={dessert.name}
+                    className={classes["image"]}
+                  />
+                </StyledTableCell>
+                <StyledTableCell>
+                  {dessert.description.length > maxLength
+                    ? `${dessert.description.substring(0, maxLength)}...`
+                    : dessert.description}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <strong>{dessert.calories}</strong> kcal
+                </StyledTableCell>
+                <StyledTableCell align="right">{dessert.type}</StyledTableCell>
+                <StyledTableCell align="right">
+                  <Emoji text={dessert.hasChocolate ? "✔️" : "❌"} />
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
         </TableBody>
       </Table>
     </TableContainer>
