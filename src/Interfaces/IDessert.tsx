@@ -6,6 +6,7 @@ interface IDessert {
   type: string;
   hasChocolate: boolean;
   image?: string;
+  ingredients: Array<number>;
 }
 
 export default IDessert;

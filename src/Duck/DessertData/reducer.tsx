@@ -5,10 +5,12 @@ import { filterByName } from "./Examples/filterByName";
 import { filterByBoolean } from "./Examples/filterByBoolean";
 import { sumWithReduce } from "./Examples/sumWithReduce";
 import { findByName } from "./Examples/findByName";
+import { hasSomeOfThemIngredient } from "./Examples/hasSomeOfThemIngredient";
 
 const initialState: IState = {
   items: Consts.DessertList,
   sumOfCalories: 0,
+  isTrueStatement: false,
 };
 
 export default function reducer(state = initialState, action: any) {
@@ -32,6 +34,14 @@ export default function reducer(state = initialState, action: any) {
       return {
         ...state,
         items: [findByName(Consts.DessertList, action.payload)],
+      };
+    case types.HAS_SOME_OF_THEM_INGREDIENT:
+      return {
+        ...state,
+        isTrueStatement: hasSomeOfThemIngredient(
+          Consts.DessertList,
+          action.payload.id
+        ),
       };
     case types.RESET_STATE:
       return {

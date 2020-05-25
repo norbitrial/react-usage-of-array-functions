@@ -29,7 +29,7 @@ const FindByName = () => {
         xs={12}
       >
         <FormControl className={classes["form-control"]}>
-          <InputLabel id="demo-simple-select-label">Name</InputLabel>
+          <InputLabel id="nameId">Name</InputLabel>
           <Select
             labelId="name"
             id="name"
