@@ -1,19 +1,21 @@
 import React from "react";
 import ILoadingProps from "../../Interfaces/ILoadingProps";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress, Grid } from "@material-ui/core";
+import useStyles from "./styles";
 
 const Loading = (props: ILoadingProps) => {
+  const classes = useStyles();
   const { text } = props;
 
   return (
-    <>
-      <p>
+    <Grid container className={classes["grid-container"]}>
+      <Grid item lg={12} md={12} sm={12} xs={12}>
         <CircularProgress color="secondary" />
-      </p>
-      <p>
+      </Grid>
+      <Grid item lg={12} md={12} sm={12} xs={12}>
         <span>{text}</span>
-      </p>
-    </>
+      </Grid>
+    </Grid>
   );
 };
 
