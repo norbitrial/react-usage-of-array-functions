@@ -5,7 +5,7 @@ parameters:
     default: "array-functions"
   build-cache:
     type: string
-    default: build-{{ .BuildNum }}
+    default: build-${CIRCLE_WORKFLOW_ID}
 orbs:
   node: circleci/node@1.1.6
 jobs:
