@@ -29,7 +29,7 @@ jobs:
                 key: dependencies-{{ checksum "package-lock.json" }}
             - run: npm run-script build
             - save_cache:
-                key: build
+                key: build-{{ .BuildNum }}
                 paths: build
   unit-test:
     executor:
@@ -49,7 +49,7 @@ jobs:
           steps:
             - checkout
             - restore_cache:
-                key: build
+                key: build-{{ .BuildNum }}
             - run: sudo npm install -g firebase-tools
             - run: firebase use << pipeline.parameters.firebase-project >> --token ${FIREBASE_TOKEN} --non-interactive
             - run: firebase deploy --token ${FIREBASE_TOKEN} --non-interactive
