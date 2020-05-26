@@ -3,9 +3,6 @@ parameters:
   firebase-project:
     type: string
     default: "array-functions"
-  build-cache:
-    type: string
-    default: build-${CIRCLE_WORKFLOW_ID}
 orbs:
   node: circleci/node@1.1.6
 jobs:
@@ -32,7 +29,7 @@ jobs:
                 key: dependencies-{{ checksum "package-lock.json" }}
             - run: npm run-script build
             - save_cache:
-                key: << pipeline.parameters.build-cache >>
+                key: ${CIRCLE_WORKFLOW_ID}
                 paths: build
   unit-test:
     executor:
@@ -52,7 +49,7 @@ jobs:
           steps:
             - checkout
             - restore_cache:
-                key: << pipeline.parameters.build-cache >>
+                key: ${CIRCLE_WORKFLOW_ID}
             - run: sudo npm install -g firebase-tools
             - run: firebase use << pipeline.parameters.firebase-project >> --token ${FIREBASE_TOKEN} --non-interactive
             - run: firebase deploy --token ${FIREBASE_TOKEN} --non-interactive
