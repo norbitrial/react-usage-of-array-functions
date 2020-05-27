@@ -92,7 +92,7 @@ const HasSomeOfThemIngredient = () => {
       >
         <Typography variant="body1" gutterBottom>
           {hasChecked && ingredient
-            ? `Some of the desserts ${isTrueStatement ? "do" : `don't`} have ${
+            ? `${isTrueStatement ? "Some" : "None"} of the desserts have ${
                 ingredient.name
               }. ${isTrueStatement ? "✔️" : "❌"}`
             : null}
