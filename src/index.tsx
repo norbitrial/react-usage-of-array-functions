@@ -11,10 +11,15 @@ import duck from "./Duck";
 
 import "./index.css";
 
-ReactGA.initialize(Consts.GATrackingId);
+const trackingId = process.env[Consts.ENV_KEY_GA_TRACKING_ID];
 
-if (window.location.hostname !== "localhost") {
+if (trackingId) {
+  ReactGA.initialize(trackingId);
   ReactGA.pageview(window.location.pathname + window.location.search);
+} else {
+  console.error(
+    `${Consts.ENV_KEY_GA_TRACKING_ID} environment variable is missing`
+  );
 }
 
 const store = createStore(duck.reducers, applyMiddleware(thunk));

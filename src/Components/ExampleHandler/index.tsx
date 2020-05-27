@@ -11,15 +11,11 @@ const ExampleHandler = (props: Props) => {
   const { example } = props;
 
   useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      ReactGA.event({
-        category: "Navigation",
-        action: "Selected an example",
-        label: example.label,
-      });
-    } else {
-      console.log(`No GA Tracking on localhost for ${Consts.GATrackingId}`);
-    }
+    ReactGA.event({
+      category: "Navigation",
+      action: "Selected an example",
+      label: example.label,
+    });
   }, [example.label]);
 
   return (
