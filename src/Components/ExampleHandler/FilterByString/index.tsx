@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import types from "../../../Duck/DessertData/types";
 import useStyles from "./styles";
 
-const FilterByName = () => {
+const FilterByString = () => {
   const classes = useStyles();
   const [name, setName] = useState("");
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const FilterByName = () => {
           variant="contained"
           onClick={() =>
             dispatch({
-              type: types.FILTER_BY_NAME,
+              type: types.FILTER_BY_STRING,
               payload: name,
             })
           }
@@ -35,4 +35,4 @@ const FilterByName = () => {
   );
 };
 
-export default FilterByName;
+export default FilterByString;
