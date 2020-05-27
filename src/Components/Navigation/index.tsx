@@ -11,6 +11,7 @@ import types from "../../Duck/DessertData/types";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import axios from "axios";
 import Error from "../Error";
+import ReactGA from "react-ga";
 
 const createProps = (index: Number) => ({
   id: `vertical-tab-${index}`,
@@ -32,18 +33,26 @@ const Navigation = () => {
     (async () => {
       setCodeSnippet("");
       const currentExample = examples.find((e: IExample) => e.id === value);
-      if (currentExample && currentExample.link) {
-        setIsInProgress(true);
-        setHasError(false);
-        const { link } = currentExample;
-        try {
-          const { data: code } = await axios.get(link);
-          setCodeSnippet(code);
-        } catch (err) {
-          setHasError(true);
-          console.log("Error occured", err);
+      if (currentExample) {
+        ReactGA.event({
+          category: "Navigation",
+          action: "Selected an example",
+          label: currentExample.label,
+        });
+
+        if (currentExample.link) {
+          setIsInProgress(true);
+          setHasError(false);
+          const { link } = currentExample;
+          try {
+            const { data: code } = await axios.get(link);
+            setCodeSnippet(code);
+          } catch (err) {
+            setHasError(true);
+            console.log("Error occured", err);
+          }
+          setIsInProgress(false);
         }
-        setIsInProgress(false);
       }
     })();
   }, [examples, value]);
