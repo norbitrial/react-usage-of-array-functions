@@ -1,10 +1,10 @@
 import IDessert from "./Interfaces/IDessert";
 import IExample from "./Interfaces/IExample";
-import FilterByString from "./Components/ExampleHandler/FilterByString";
-import FilterByBoolean from "./Components/ExampleHandler/FilterByBoolean";
-import SumWithReduce from "./Components/ExampleHandler/SumWithReduce";
-import FindByName from "./Components/ExampleHandler/FindByName";
-import HaveSomeOfThem from "./Components/ExampleHandler/HaveSomeOfThem";
+import FilterByString from "./Components/Examples/FilterByString";
+import FilterByBoolean from "./Components/Examples/FilterByBoolean";
+import SumWithReduce from "./Components/Examples/SumWithReduce";
+import FindByName from "./Components/Examples/FindByName";
+import HaveSomeOfThem from "./Components/Examples/HaveSomeOfThem";
 import IIngredient from "./Interfaces/IIngredient";
 
 const dessertList: Array<IDessert> = [
