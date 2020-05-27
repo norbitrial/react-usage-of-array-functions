@@ -44,7 +44,8 @@ const Welcome = () => {
         <Emoji text={"✔️"} />
       </Typography>
       <Typography variant="body1" gutterBottom={true}>
-        <Emoji text={"👈"} /> Select an example from the tabs
+        <Emoji text={isSmallScreen ? "☝" : "👈"} /> Select an example from the
+        tabs
       </Typography>
       <Typography variant="body1" gutterBottom={true}>
         <Emoji text="🌎" /> Or visit my website:{" "}

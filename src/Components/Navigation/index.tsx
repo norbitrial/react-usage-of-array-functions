@@ -80,65 +80,81 @@ const Navigation = () => {
     );
   };
 
+  const renderPanels = () => {
+    return (
+      <>
+        <TabPanel value={value} index={0} className={classes["tab-panel"]}>
+          <Welcome />
+        </TabPanel>
+        {examples.map((example: IExample) => (
+          <TabPanel
+            key={`${example.id}_${example.label}`}
+            value={value}
+            index={example.id}
+            className={classes["tab-panel"]}
+          >
+            <Grid container className={classes["grid-container"]}>
+              <Grid
+                item
+                lg={3}
+                md={3}
+                sm={3}
+                xs={3}
+                className={classes["grid-item"]}
+              >
+                <example.componentName />
+              </Grid>
+              <Grid
+                item
+                lg={9}
+                md={9}
+                sm={9}
+                xs={9}
+                className={classes["grid-item"]}
+              >
+                {isInProgress ? (
+                  <Loading text={"Loading code snippet from GitHub..."} />
+                ) : (
+                  codeSnippet && (
+                    <SyntaxHighlighter
+                      language="typescript"
+                      className={classes["syntax"]}
+                    >
+                      {codeSnippet}
+                    </SyntaxHighlighter>
+                  )
+                )}
+
+                {hasError ? <Error /> : null}
+              </Grid>
+            </Grid>
+          </TabPanel>
+        ))}
+      </>
+    );
+  };
+
   return (
     <Grid container>
       <Grid item lg={12} md={12} sm={12} xs={12}>
         <div className={classes.root}>
           {isSmallScreen ? (
-            <div className={classes["tabs-border"]}>{renderTabs()}</div>
+            <Grid container>
+              <Grid item lg={12} md={12} sm={12} xs={12}>
+                {renderTabs()}
+              </Grid>
+            </Grid>
           ) : (
             renderTabs()
           )}
-          <TabPanel value={value} index={0} className={classes["tab-panel"]}>
-            <Welcome />
-          </TabPanel>
-
-          {examples.map((example: IExample) => (
-            <TabPanel
-              key={`${example.id}_${example.label}`}
-              value={value}
-              index={example.id}
-              className={classes["tab-panel"]}
-            >
-              <Grid container className={classes["grid-container"]}>
-                <Grid
-                  item
-                  lg={3}
-                  md={3}
-                  sm={3}
-                  xs={3}
-                  className={classes["grid-item"]}
-                >
-                  <example.componentName />
-                </Grid>
-                <Grid
-                  item
-                  lg={9}
-                  md={9}
-                  sm={9}
-                  xs={9}
-                  className={classes["grid-item"]}
-                >
-                  {isInProgress ? (
-                    <Loading text={"Loading code snippet from GitHub..."} />
-                  ) : (
-                    codeSnippet && (
-                      <SyntaxHighlighter
-                        language="typescript"
-                        className={classes["syntax"]}
-                      >
-                        {codeSnippet}
-                      </SyntaxHighlighter>
-                    )
-                  )}
-
-                  {hasError ? <Error /> : null}
-                </Grid>
-              </Grid>
-            </TabPanel>
-          ))}
+          {!isSmallScreen ? renderPanels() : null}
         </div>
       </Grid>
+      {isSmallScreen ? (
+        <Grid item lg={12} md={12} sm={12} xs={12}>
+          {renderPanels()}
+        </Grid>
+      ) : null}
     </Grid>
   );
 };
