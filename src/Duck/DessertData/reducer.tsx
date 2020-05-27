@@ -1,7 +1,7 @@
 import types from "./types";
 import Consts from "../../Consts";
 import IState from "../../Interfaces/IState";
-import { filterByName } from "./Examples/filterByName";
+import { filterByString } from "./Examples/filterByString";
 import { filterByBoolean } from "./Examples/filterByBoolean";
 import { sumWithReduce } from "./Examples/sumWithReduce";
 import { findByName } from "./Examples/findByName";
@@ -15,10 +15,10 @@ const initialState: IState = {
 
 export default function reducer(state = initialState, action: any) {
   switch (action.type) {
-    case types.FILTER_BY_NAME:
+    case types.FILTER_BY_STRING:
       return {
         ...state,
-        items: filterByName(Consts.DessertList, action.payload),
+        items: filterByString(Consts.DessertList, action.payload),
       };
     case types.FILTER_BY_BOOLEAN:
       return {

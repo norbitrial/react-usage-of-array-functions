@@ -1,6 +1,6 @@
 import IDessert from "./Interfaces/IDessert";
 import IExample from "./Interfaces/IExample";
-import FilterByName from "./Components/ExampleHandler/FilterByName";
+import FilterByString from "./Components/ExampleHandler/FilterByString";
 import FilterByBoolean from "./Components/ExampleHandler/FilterByBoolean";
 import SumWithReduce from "./Components/ExampleHandler/SumWithReduce";
 import FindByName from "./Components/ExampleHandler/FindByName";
@@ -132,10 +132,10 @@ const dessertList: Array<IDessert> = [
 const exampleList: Array<IExample> = [
   {
     id: 1,
-    label: "Filter By Name",
-    componentName: FilterByName,
+    label: "Filter By String",
+    componentName: FilterByString,
     link:
-      "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/filterByName.tsx",
+      "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/filterByString.tsx",
   },
   {
     id: 2,
