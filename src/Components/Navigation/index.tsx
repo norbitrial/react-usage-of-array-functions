@@ -62,77 +62,90 @@ const Navigation = () => {
     setValue(newValue);
   };
 
-  const renderTabs = () => {
-    return (
-      <Tabs
-        orientation={isSmallScreen ? "horizontal" : "vertical"}
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Code example tabs"
-        className={classes.tabs}
-      >
-        <Tab label="Welcome" {...createProps(0)} />
-        {examples.map((example: IExample) => (
-          <Tab label={example.label} {...createProps(example.id)} />
-        ))}
-      </Tabs>
-    );
-  };
+  const renderTabs = () => (
+    <Tabs
+      orientation={isSmallScreen ? "horizontal" : "vertical"}
+      variant="scrollable"
+      value={value}
+      onChange={handleChange}
+      aria-label="Code example tabs"
+      className={classes.tabs}
+    >
+      <Tab label="Welcome" {...createProps(0)} />
+      {examples.map((example: IExample) => (
+        <Tab label={example.label} {...createProps(example.id)} />
+      ))}
+    </Tabs>
+  );
 
-  const renderPanels = () => {
-    return (
-      <>
-        <TabPanel value={value} index={0} className={classes["tab-panel"]}>
-          <Welcome />
-        </TabPanel>
-        {examples.map((example: IExample) => (
-          <TabPanel
-            key={`${example.id}_${example.label}`}
-            value={value}
-            index={example.id}
-            className={classes["tab-panel"]}
+  const renderCodeGridItem = () => (
+    <Grid
+      item
+      lg={isSmallScreen ? 12 : 9}
+      md={isSmallScreen ? 12 : 9}
+      sm={isSmallScreen ? 12 : 9}
+      xs={isSmallScreen ? 12 : 9}
+      className={classes["grid-item"]}
+    >
+      {isInProgress ? (
+        <Loading text={"Loading code snippet from GitHub..."} />
+      ) : (
+        codeSnippet && (
+          <SyntaxHighlighter
+            language="typescript"
+            className={classes["syntax"]}
           >
-            <Grid container className={classes["grid-container"]}>
-              <Grid
-                item
-                lg={3}
-                md={3}
-                sm={3}
-                xs={3}
-                className={classes["grid-item"]}
-              >
-                <example.componentName />
-              </Grid>
-              <Grid
-                item
-                lg={9}
-                md={9}
-                sm={9}
-                xs={9}
-                className={classes["grid-item"]}
-              >
-                {isInProgress ? (
-                  <Loading text={"Loading code snippet from GitHub..."} />
-                ) : (
-                  codeSnippet && (
-                    <SyntaxHighlighter
-                      language="typescript"
-                      className={classes["syntax"]}
-                    >
-                      {codeSnippet}
-                    </SyntaxHighlighter>
-                  )
-                )}
+            {codeSnippet}
+          </SyntaxHighlighter>
+        )
+      )}
 
-                {hasError ? <Error /> : null}
-              </Grid>
-            </Grid>
-          </TabPanel>
-        ))}
-      </>
-    );
-  };
+      {hasError ? <Error /> : null}
+    </Grid>
+  );
+
+  const renderExampleGridItem = (example: IExample) => (
+    <Grid
+      item
+      lg={isSmallScreen ? 12 : 3}
+      md={isSmallScreen ? 12 : 3}
+      sm={isSmallScreen ? 12 : 3}
+      xs={isSmallScreen ? 12 : 3}
+      className={classes["grid-item"]}
+    >
+      <example.componentName />
+    </Grid>
+  );
+
+  const renderPanels = () => (
+    <>
+      <TabPanel value={value} index={0} className={classes["tab-panel"]}>
+        <Welcome />
+      </TabPanel>
+      {examples.map((example: IExample) => (
+        <TabPanel
+          key={`${example.id}_${example.label}`}
+          value={value}
+          index={example.id}
+          className={classes["tab-panel"]}
+        >
+          <Grid container className={classes["grid-container"]}>
+            {isSmallScreen ? (
+              <>
+                {renderCodeGridItem()}
+                {renderExampleGridItem(example)}
+              </>
+            ) : (
+              <>
+                {renderExampleGridItem(example)}
+                {renderCodeGridItem()}
+              </>
+            )}
+          </Grid>
+        </TabPanel>
+      ))}
+    </>
+  );
 
   return (
     <Grid container>
