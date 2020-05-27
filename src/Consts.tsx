@@ -183,7 +183,7 @@ const ingredientsList: Array<IIngredient> = [
 ];
 
 export default {
-  GATrackingId: "UA-167503199-1",
+  ENV_KEY_GA_TRACKING_ID: "REACT_APP_GA_TRACKING_ID",
   CodeRepoUrl: "https://github.com/norbitrial/react-usage-of-array-functions",
   Examples: exampleList,
   TableCellNames: [
