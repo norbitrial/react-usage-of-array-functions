@@ -20,7 +20,14 @@ const SumWithReduce = () => {
 
   return (
     <Grid container className={classes["grid-container"]}>
-      <Grid item className={classes["grid-item"]}>
+      <Grid
+        item
+        lg={12}
+        md={12}
+        sm={12}
+        xs={12}
+        className={classes["grid-item"]}
+      >
         <FormControl className={classes["form-control"]}>
           <Input
             id="standard-adornment-weight"
@@ -36,7 +43,14 @@ const SumWithReduce = () => {
           </FormHelperText>
         </FormControl>
       </Grid>
-      <Grid item className={classes["grid-item"]}>
+      <Grid
+        item
+        lg={12}
+        md={12}
+        sm={12}
+        xs={12}
+        className={classes["grid-item"]}
+      >
         <Button
           variant="contained"
           onClick={() =>

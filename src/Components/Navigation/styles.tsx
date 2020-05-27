@@ -1,4 +1,5 @@
 import { makeStyles, Theme } from "@material-ui/core";
+import Consts from "../../Consts";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -8,6 +9,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     minHeight: 264,
     height: "20vh",
     paddingBottom: "2vh",
+    [`@media ${Consts.SmallScreenMediaQuery}`]: {
+      minHeight: "0",
+      height: "47px",
+    },
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,

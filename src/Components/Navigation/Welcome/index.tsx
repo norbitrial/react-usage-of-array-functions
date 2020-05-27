@@ -1,9 +1,12 @@
 import React from "react";
 import Emoji from "../../Emoji";
 import useStyles from "./styles";
+import { useMediaQuery } from "@material-ui/core";
+import Consts from "../../../Consts";
 import { Typography } from "@material-ui/core";
 
 const Welcome = () => {
+  const isSmallScreen = useMediaQuery(Consts.SmallScreenMediaQuery);
   const styles = useStyles();
   return (
     <>
@@ -41,7 +44,8 @@ const Welcome = () => {
         <Emoji text={"✔️"} />
       </Typography>
       <Typography variant="body1" gutterBottom={true}>
-        <Emoji text={"👈"} /> Select an example from the tabs
+        <Emoji text={isSmallScreen ? "☝" : "👈"} /> Select an example from the
+        tabs
       </Typography>
       <Typography variant="body1" gutterBottom={true}>
         <Emoji text="🌎" /> Or visit my website:{" "}

@@ -11,14 +11,28 @@ const FilterByString = () => {
 
   return (
     <Grid container className={classes["grid-container"]}>
-      <Grid item className={classes["grid-item"]}>
+      <Grid
+        item
+        lg={12}
+        md={12}
+        sm={12}
+        xs={12}
+        className={classes["grid-item"]}
+      >
         <TextField
           id="standard-basic"
           label="Name"
           onChange={(e) => setName(e.target.value)}
         />
       </Grid>
-      <Grid item className={classes["grid-item"]}>
+      <Grid
+        item
+        lg={12}
+        md={12}
+        sm={12}
+        xs={12}
+        className={classes["grid-item"]}
+      >
         <Button
           variant="contained"
           onClick={() =>
