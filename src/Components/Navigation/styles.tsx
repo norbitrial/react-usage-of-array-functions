@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: "flex",
-    minHeight: 264,
+    minHeight: "320px",
     height: "20vh",
     paddingBottom: "2vh",
     [`@media ${Consts.SmallScreenMediaQuery}`]: {
