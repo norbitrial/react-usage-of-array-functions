@@ -5,6 +5,7 @@ const types = {
   SUM_WITH_REDUCE: "dessert-data/sum-with-reduce",
   FIND_BY_NAME: "dessert-data/find-by-name",
   HAVE_SOME_OF_THEM: "dessert-data/have-some-of-them-ingredient",
+  MAP_NEW_CALORIES: "dessert-data/map-new-calories",
 };
 
 export default types;

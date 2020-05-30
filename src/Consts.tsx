@@ -6,6 +6,7 @@ import SumWithReduce from "./Components/Examples/SumWithReduce";
 import FindByName from "./Components/Examples/FindByName";
 import HaveSomeOfThem from "./Components/Examples/HaveSomeOfThem";
 import IIngredient from "./Interfaces/IIngredient";
+import MapNewCalories from "./Components/Examples/MapNewCalories";
 
 const dessertList: Array<IDessert> = [
   {
@@ -164,6 +165,13 @@ const exampleList: Array<IExample> = [
     componentName: HaveSomeOfThem,
     link:
       "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/haveSomeOfThem.tsx",
+  },
+  {
+    id: 6,
+    label: "Map New Calories",
+    componentName: MapNewCalories,
+    link:
+      "https://raw.githubusercontent.com/norbitrial/react-usage-of-array-functions/master/src/Duck/DessertData/Examples/mapNewCalories.tsx",
   },
 ];
 
