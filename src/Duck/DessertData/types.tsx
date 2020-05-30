@@ -6,6 +6,7 @@ const types = {
   FIND_BY_NAME: "dessert-data/find-by-name",
   HAVE_SOME_OF_THEM: "dessert-data/have-some-of-them-ingredient",
   MAP_NEW_CALORIES: "dessert-data/map-new-calories",
+  DELETE_ITEM: "dessert-data/delete-item",
 };
 
 export default types;

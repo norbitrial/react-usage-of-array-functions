@@ -7,6 +7,7 @@ import { sumWithReduce } from "./Examples/sumWithReduce";
 import { findByName } from "./Examples/findByName";
 import { haveSomeOfThem } from "./Examples/haveSomeOfThem";
 import { mapNewCalories } from "./Examples/mapNewCalories";
+import { deleteItem } from "./Examples/deleteItem";
 
 const initialState: IState = {
   items: Consts.DessertList,
@@ -45,6 +46,11 @@ export default function reducer(state = initialState, action: any) {
       return {
         ...state,
         items: mapNewCalories(Consts.DessertList),
+      };
+    case types.DELETE_ITEM:
+      return {
+        ...state,
+        items: deleteItem(state.items, action.payload),
       };
     case types.RESET_STATE:
       return {
